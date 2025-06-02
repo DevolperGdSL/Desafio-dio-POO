@@ -1,35 +1,17 @@
 package br.com.dio.dominio;
 
-public class Curso {
-    private String titulo;
-    private String descricao;
+public class Curso extends Conteudo {
     private int cargaHoraria;
 
     public Curso( String titulo, int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
-        this.titulo = titulo;
-        this.descricao = "Sem descrição";
+        this.setTitulo(titulo);
+        this.setDescricao("Sem descrição");
     }
     public Curso(String titulo, String descricao,int cargaHoraria){
         this.cargaHoraria = cargaHoraria;
-        this.titulo = titulo;
-        this.descricao = descricao;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.setTitulo(titulo);
+        this.setDescricao(descricao);
     }
 
     public int getCargaHoraria() {
@@ -40,12 +22,17 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
+    public double calcularXP(){
+        return XP_PADRAO * cargaHoraria;
+    }
+
     @Override
     public String toString() {
         return "Curso{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
+                "titulo='" + getTitulo() + '\'' +
+                ", descricao='" + getDescricao() + '\'' +
+                ", cargaHoraria=" + cargaHoraria + '\'' +
+                ", XP=" + calcularXP() +
                 '}';
     }
 }
