@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class Bootcamp {
@@ -32,8 +33,8 @@ public class Bootcamp {
         return conteudos;
     }
 
-    public void setConteudos(Set<Conteudo> conteudos) {
-        this.conteudos = conteudos;
+    public void setConteudos(Conteudo conteudo) {
+        this.conteudos.add(conteudo);
     }
 
     public String getNome() {
@@ -62,5 +63,16 @@ public class Bootcamp {
     @Override
     public int hashCode() {
         return Objects.hash(nome, descricao, dataInicial, dataFinal, devsInscritos, conteudos);
+    }
+
+    @Override
+    public String toString() {
+        return "Bootcamp{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", dataInicial=" + dataInicial +
+                ", dataFinal=" + dataFinal +
+                ", conteudos=" + conteudos.stream().map(Conteudo::getTitulo).collect(Collectors.joining(", ")) +
+                '}';
     }
 }

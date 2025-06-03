@@ -9,9 +9,11 @@ public class Main {
         Mentoria mentoria1 = new Mentoria("Mentoria Java", "Tire dúvidas ao vivo", LocalDate.now());
 
         Bootcamp bootcamp = new Bootcamp("Bootcamp Java Developer", "Formação completa em Java");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria1);
+        bootcamp.setConteudos(curso1);
+        bootcamp.setConteudos(curso2);
+        bootcamp.setConteudos(mentoria1);
+
+        System.out.println(bootcamp);
 
         Dev devJoao = new Dev("João");
         devJoao.inscreverBootCamp(bootcamp);
